@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+    title: Recipe API
+    description: The recipe API documentation.
+    version: 1.0.0
+    license:
+        name: MIT
+        url: https://opensource.org/licenses/MIT
+servers:
+    - url: http://127.0.0.1:3000
+paths:
+    /recipe/generate:
+        $ref: paths/recipe@generate.yaml
+tags:
+    - name: recipe
+      description: Recipe operations
+security: []

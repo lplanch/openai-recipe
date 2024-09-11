@@ -1,0 +1,6 @@
+description: Redirect
+headers:
+  location:
+    schema:
+      type: string
+      description: Redirection location

@@ -1,0 +1,15 @@
+description: ContentTooLarge
+content:
+  application/json:
+    schema:
+      title: ContentTooLarge
+      type: object
+      properties:
+        status:
+          type: integer
+          default: 413
+        error:
+          type: string
+          default: Content Too Large
+        description:
+          type: string

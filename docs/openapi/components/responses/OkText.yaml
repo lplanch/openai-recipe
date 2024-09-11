@@ -1,0 +1,6 @@
+description: OK
+content:
+    text/html:
+        schema:
+            title: OK
+            type: string

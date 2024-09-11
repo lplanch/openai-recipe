@@ -1,0 +1,15 @@
+description: Bad Request
+content:
+  application/json:
+    schema:
+      title: BadRequest
+      type: object
+      properties:
+        status:
+          type: integer
+          default: 400
+        error:
+          type: string
+          default: Bad Request
+        reason:
+          type: string

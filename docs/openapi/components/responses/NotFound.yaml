@@ -1,0 +1,13 @@
+description: Not Found
+content:
+  application/json:
+    schema:
+      title: NotFound
+      type: object
+      properties:
+        status:
+          type: integer
+          default: 404
+        error:
+          type: string
+          default: Not Found

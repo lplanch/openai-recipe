@@ -1,0 +1,12 @@
+description: Unauthorized
+content:
+  application/json:
+    schema:
+      title: Unauthorized
+      type: object
+      properties:
+        status:
+          type: integer
+          default: 401
+        description:
+          type: string

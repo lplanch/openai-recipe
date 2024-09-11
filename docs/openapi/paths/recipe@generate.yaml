@@ -1,0 +1,38 @@
+post:
+    operationId: generateRecipe
+    summary: Generate a recipe considering multiple parameters
+    requestBody:
+        description: Body of generate recipe function
+        content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        ingredients:
+                            type: object
+                            additionalProperties:
+                                type: string
+                        amount:
+                            type: integer
+                            minimum: 0
+                        kitchen_tools:
+                            type: array
+                            items:
+                                type: string
+                        minutes:
+                            type: integer
+                            minimum: 0
+                    required:
+                        - ingredients
+                        - amount
+                        - kitchen_tools
+                        - minutes
+    responses:
+        "200":
+            $ref: ../components/responses/OkText.yaml
+        "400":
+            $ref: ../components/responses/BadRequest.yaml
+        "404":
+            $ref: ../components/responses/NotFound.yaml
+    tags:
+        - recipe

@@ -1,0 +1,41 @@
+{
+    "name": "openai-recette",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.ts",
+    "scripts": {
+        "dev": "NODE_ENV=development tsx watch -r dotenv/config './src/index.ts'",
+        "build": "tsc -p .",
+        "start": "NODE_ENV=production node './dist/index.js'",
+        "test": "NODE_ENV=testing jest",
+        "openapi:lint": "openapi lint docs/openapi-merged.yaml",
+        "openapi:merge": "openapi bundle docs/openapi/openapi.yaml --output docs/openapi-merged.yaml",
+        "openapi:up-to-date": "openapi bundle docs/openapi/openapi.yaml --output /tmp/test-openapi.yaml && cmp --silent /tmp/test-openapi.yaml docs/openapi-merged.yaml"
+    },
+    "author": "lplanch",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.19.2",
+        "express-openapi-validator": "^5.3.5",
+        "openai": "^4.58.0"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.25.4",
+        "@redocly/cli": "^1.24.0",
+        "@types/express": "^4.17.21",
+        "@types/jest": "^29.5.12",
+        "@types/module-alias": "^2.0.4",
+        "@types/supertest": "^6.0.2",
+        "babel-jest": "^29.7.0",
+        "dotenv": "^16.4.5",
+        "jest": "^29.7.0",
+        "module-alias": "^2.2.3",
+        "prettier": "^3.3.3",
+        "supertest": "^7.0.0",
+        "ts-jest": "^29.2.5",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "tsx": "^4.19.0",
+        "typescript": "^5.6.2"
+    }
+}

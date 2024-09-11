@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Recipe API
+  description: The recipe API documentation.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://127.0.0.1:3000
+security: []
+tags:
+  - name: recipe
+    description: Recipe operations
+paths:
+  /recipe/generate:
+    post:
+      operationId: generateRecipe
+      summary: Generate a recipe considering multiple parameters
+      requestBody:
+        description: Body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ingredients:
+                  type: object
+                  additionalProperties:
+                    type: string
+                amount:
+                  type: integer
+                kitchen_tools:
+                  type: array
+                  items:
+                    type: string
+                minutes:
+                  type: integer
+              required:
+                - ingredients
+                - amount
+                - kitchen_tools
+                - minutes
+      responses:
+        '200':
+          $ref: '#/components/responses/OkText'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - recipe
+components:
+  responses:
+    OkText:
+      description: OK
+      content:
+        text/html:
+          schema:
+            title: OK
+            type: string
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            title: BadRequest
+            type: object
+            properties:
+              status:
+                type: integer
+                default: 400
+              error:
+                type: string
+                default: Bad Request
+              reason:
+                type: string
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            title: Unauthorized
+            type: object
+            properties:
+              status:
+                type: integer
+                default: 401
+              description:
+                type: string
+    Forbidden:
+      description: Forbidden to perform an action
+      content:
+        application/json:
+          schema:
+            title: Forbidden
+            type: object
+            additionalProperties: false
+            properties:
+              type:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+            required:
+              - type
+              - title
+              - detail
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            title: NotFound
+            type: object
+            properties:
+              status:
+                type: integer
+                default: 404
+              error:
+                type: string
+                default: Not Found
